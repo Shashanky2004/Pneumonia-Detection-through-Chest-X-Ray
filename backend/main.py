@@ -7,6 +7,7 @@ from tensorflow.keras.models import load_model
 import io
 from PIL import Image
 import os
+import requests
 
 app = FastAPI()
 
@@ -19,26 +20,30 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+def download_model(url, save_path):
+    """Download the model file from the given URL."""
+    try:
+        response = requests.get(url, stream=True)
+        response.raise_for_status()
+        
+        # Ensure the directory exists
+        os.makedirs(os.path.dirname(save_path), exist_ok=True)
+        
+        # Save the file
+        with open(save_path, 'wb') as f:
+            for chunk in response.iter_content(chunk_size=8192):
+                f.write(chunk)
+        return True
+    except Exception as e:
+        print(f"Error downloading model: {e}")
+        return False
+
 # Load the model at startup
 model = None
 try:
-    # Try different possible model locations
-    possible_paths = [
-        'pneumonia_detection.h5',  # Current directory
-        '../pneumonia_detection.h5',  # Parent directory
-        os.path.join(os.path.dirname(os.path.abspath(__file__)), 'pneumonia_detection.h5'),  # Backend directory
-        os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'pneumonia_detection.h5')  # Project root
-    ]
-    
-    for model_path in possible_paths:
-        if os.path.exists(model_path):
-            model = load_model(model_path)
-            print(f"Model loaded successfully from {model_path}!")
-            break
-    
-    if model is None:
-        raise FileNotFoundError("Could not find model file in any of the expected locations")
-        
+    model_path = os.path.join(os.path.dirname(__file__), 'pneumonia_detection.h5')
+    model = load_model(model_path)
+    print(f"Model loaded successfully from: {model_path}")
 except Exception as e:
     print(f"Error loading model: {e}")
 
