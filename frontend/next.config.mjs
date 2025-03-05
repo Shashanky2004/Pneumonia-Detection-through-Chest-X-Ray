@@ -1,27 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['localhost'],
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: '**',
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '3000',
+        pathname: '/**',
       },
     ],
   },
   output: 'standalone',
-  webpack: (config, { isServer }) => {
-    // Add polyfills and other webpack configurations
-    config.resolve.fallback = {
-      ...config.resolve.fallback,
-      fs: false,
-      path: false,
-    };
-    return config;
-  },
   experimental: {
-    serverActions: true
-  }
+    serverActions: {
+      allowedOrigins: ['localhost:3000', 'localhost:3001'],
+    },
+  },
 };
 
 export default nextConfig; 
