@@ -13,7 +13,7 @@ app = FastAPI()
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000"],  # Your Next.js frontend URL
+    allow_origins=["*"],  # Update this in production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -22,11 +22,23 @@ app.add_middleware(
 # Load the model at startup
 model = None
 try:
-    # Get the absolute path to the model file
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    model_path = os.path.join(os.path.dirname(current_dir), 'pneumonia_detection.h5')
-    model = load_model(model_path)
-    print(f"Model loaded successfully from {model_path}!")
+    # Try different possible model locations
+    possible_paths = [
+        'pneumonia_detection.h5',  # Current directory
+        '../pneumonia_detection.h5',  # Parent directory
+        os.path.join(os.path.dirname(os.path.abspath(__file__)), 'pneumonia_detection.h5'),  # Backend directory
+        os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'pneumonia_detection.h5')  # Project root
+    ]
+    
+    for model_path in possible_paths:
+        if os.path.exists(model_path):
+            model = load_model(model_path)
+            print(f"Model loaded successfully from {model_path}!")
+            break
+    
+    if model is None:
+        raise FileNotFoundError("Could not find model file in any of the expected locations")
+        
 except Exception as e:
     print(f"Error loading model: {e}")
 
