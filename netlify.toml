@@ -4,7 +4,7 @@
   publish = ".next"
 
 [build.environment]
-  NEXT_PUBLIC_API_URL = "https://pneumonia-detection-api.onrender.com"
+  NEXT_PUBLIC_API_URL = "https://pneumonia-detection-through-chest-x-ray.onrender.com"
   NODE_VERSION = "18"
   NPM_VERSION = "10.2.4"
 
