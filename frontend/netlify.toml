@@ -4,7 +4,7 @@
   base = "frontend"
 
 [build.environment]
-  NEXT_PUBLIC_API_URL = "https://your-render-backend-url.onrender.com"
+  NEXT_PUBLIC_API_URL = "https://pneumonia-detection-api.onrender.com"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
