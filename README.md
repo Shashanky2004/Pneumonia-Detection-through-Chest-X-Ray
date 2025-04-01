@@ -18,6 +18,12 @@ A web-based application that utilizes deep learning to detect COVID-19 from ches
 - React Router
 - CSS3 for styling and animations
 
+# Screeshot of the project
+<img width="1470" alt="Screenshot 2025-04-01 at 11 46 02 PM" src="https://github.com/user-attachments/assets/f7659731-168f-449d-8772-876deb0ee4f3" />
+![image](https://github.com/user-attachments/assets/b38d0a96-60d2-44ed-9267-ae9228d583f6)
+![image](https://github.com/user-attachments/assets/008f952a-75fd-48c3-b781-241f1d32ccf8)
+![image](https://github.com/user-attachments/assets/e8945c2f-cc62-499d-a7da-8fcbf9202f30)
+
 ### Backend
 - Django
 - Django REST Framework
