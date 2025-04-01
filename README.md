@@ -20,9 +20,10 @@ A web-based application that utilizes deep learning to detect COVID-19 from ches
 
 # Screeshot of the project
 <img width="1470" alt="Screenshot 2025-04-01 at 11 46 02 PM" src="https://github.com/user-attachments/assets/f7659731-168f-449d-8772-876deb0ee4f3" />
-![image](https://github.com/user-attachments/assets/b38d0a96-60d2-44ed-9267-ae9228d583f6)
-![image](https://github.com/user-attachments/assets/008f952a-75fd-48c3-b781-241f1d32ccf8)
-![image](https://github.com/user-attachments/assets/e8945c2f-cc62-499d-a7da-8fcbf9202f30)
+<img width="1470" alt="Screenshot 2025-04-01 at 11 47 09 PM" src="https://github.com/user-attachments/assets/4f42c04d-03c8-4d77-a342-ce92185440d5" />
+<img width="1470" alt="Screenshot 2025-04-01 at 11 47 20 PM" src="https://github.com/user-attachments/assets/1d832028-57f7-4523-8a7e-bf9018daa813" />
+<img width="1470" alt="Screenshot 2025-04-01 at 11 47 50 PM" src="https://github.com/user-attachments/assets/4438bc50-820a-4678-a0fb-23298369b242" />
+
 
 ### Backend
 - Django
